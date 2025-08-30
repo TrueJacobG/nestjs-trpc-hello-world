@@ -37,3 +37,12 @@ $ npm run test:cov
 npx drizzle-kit generate
 npx drizzle-kit push
 ```
+
+---
+
+# Frontend
+
+## Run
+```bash
+npm run dev
+```

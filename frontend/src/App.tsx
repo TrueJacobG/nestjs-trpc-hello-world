@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import {trpc} from "../trpc";
 
 function App() {
-    const [message, setMessage] = useState<string>("Loading...");
+    const helloQuery = trpc.hello.useQuery();
 
-    useEffect(() => {
-        fetch("http://localhost:3000/hello")
-            .then(res => res.text())
-            .then(setMessage)
-            .catch(() => setMessage("Error fetching message"));
-    }, []);
+    if (helloQuery.isLoading) return <p>Loading...</p>;
+    if (helloQuery.error) return <p>Error: {helloQuery.error.message}</p>;
 
     return (
         <div style={{ padding: "2rem", fontSize: "1.5rem" }}>
-            <h1>{message}</h1>
+            <h1>{helloQuery.data}</h1>
         </div>
     );
 }
