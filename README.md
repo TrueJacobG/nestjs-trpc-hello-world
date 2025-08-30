@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-$ npm install
+$ npm i
 ```
 
 ## Compile and run the project
@@ -33,14 +33,25 @@ $ npm run test:cov
 ```
 
 ## Migrations
+
+### Generate (based on schema.ts)
 ```bash
 npx drizzle-kit generate
+```
+
+### Run migrations
+```bash
 npx drizzle-kit push
 ```
 
 ---
 
 # Frontend
+
+## Installation
+```bash
+npm i
+```
 
 ## Run
 ```bash
