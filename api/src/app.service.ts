@@ -5,6 +5,7 @@ import {messages} from '../db/schema';
 @Injectable()
 export class AppService {
     async getHello(): Promise<string> {
+        console.log("hello world service");
         const result = await db.select().from(messages).limit(1);
         if (result.length === 0) {
             await db.insert(messages).values({content: "Hello World from Postgres + Drizzle!"});

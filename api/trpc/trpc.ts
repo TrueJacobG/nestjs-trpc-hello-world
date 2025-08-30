@@ -1,13 +1,14 @@
-import { initTRPC } from "@trpc/server";
-import { z } from "zod";
+import {initTRPC} from "@trpc/server";
+import {z} from "zod";
+import {TrpcContextService} from "./trpc-context.service";
 
-const t = initTRPC.create();
+const t = initTRPC.context<ReturnType<TrpcContextService['getContext']>>().create();
 
 export const appRouter = t.router({
     hello: t.procedure
-        .input(z.void()) // no input
-        .query(() => {
-            return "Hello World from tRPC + NestJS!";
+        .input(z.void())
+        .query(({ctx}) => {
+            return ctx.appController.getHello()
         }),
 });
 
